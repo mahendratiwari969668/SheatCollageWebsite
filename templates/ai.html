@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHEAT AI Assistant</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f8fbff;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      width: 100%;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+      color: white;
+      padding: 18px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-links a.active {
+      color: #facc15;
+    }
+
+    .hero {
+      padding: 70px 20px 40px;
+      text-align: center;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.75), rgba(30, 58, 138, 0.7)),
+        url("https://www.sheatcollege.com/wp-content/uploads/2025/05/6.jpg") center/cover no-repeat;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: auto;
+      font-size: 18px;
+      color: #dbeafe;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto 70px;
+      padding: 0 20px;
+    }
+
+    .ai-card {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .ai-card h2 {
+      font-size: 30px;
+      color: #1e3a8a;
+      margin-bottom: 16px;
+    }
+
+    .ai-card p {
+      color: #64748b;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .ai-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .ai-form textarea {
+      width: 100%;
+      min-height: 170px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid #cbd5e1;
+      outline: none;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    .ai-form textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+    }
+
+    .submit-btn {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .result-box {
+      margin-top: 25px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      padding: 22px;
+      border-radius: 18px;
+    }
+
+    .result-box h3 {
+      color: #1e3a8a;
+      margin-bottom: 10px;
+    }
+
+    .result-box p {
+      white-space: pre-wrap;
+      color: #334155;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 22px;
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 16px 20px;
+        justify-content: center;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">SHEAT Group of Institutions</div>
+
+    <ul class="nav-links">
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('about') }}">About</a></li>
+      <li><a href="{{ url_for('courses') }}">Courses</a></li>
+      <li><a href="{{ url_for('admission') }}">Admissions</a></li>
+      <li><a href="{{ url_for('faculty') }}">Faculty</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      <li><a href="{{ url_for('ai') }}" class="active">AI</a></li>
+    </ul>
+  </header>
+
+  <section class="hero">
+    <h1>Ask SHEAT AI Assistant</h1>
+    <p>
+      Ask about admissions, courses, eligibility, campus information,
+      student guidance, or any general educational question.
+    </p>
+  </section>
+
+  <div class="container">
+    <div class="ai-card">
+      <h2>Your AI Support Desk</h2>
+      <p>
+        Example questions:
+        <br>• Which course is best after 12th?
+        <br>• Tell me about BCA
+        <br>• What is the difference between B.Tech and Polytechnic?
+        <br>• How can I apply for admission?
+      </p>
+
+      <form method="POST" action="{{ url_for('ai') }}" class="ai-form">
+        <textarea name="prompt" placeholder="Type your question here..." required>{{ user_prompt }}</textarea>
+        <button type="submit" class="submit-btn">Ask AI</button>
+      </form>
+
+      {% if ai_response %}
+      <div class="result-box">
+        <h3>AI Response:</h3>
+        <p>{{ ai_response }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer class="footer">
+    © 2026 SHEAT Group of Institutions. All Rights Reserved.
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - SHEAT Group of Institutions</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f8fbff;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      width: 100%;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+      color: white;
+      padding: 18px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 3px;
+      background: #facc15;
+      border-radius: 10px;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #facc15;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #facc15;
+    }
+
+    /* ================= HERO ================= */
+    .contact-hero {
+      min-height: 52vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.78), rgba(30, 58, 138, 0.68)),
+        url("https://www.sheatcollege.com/wp-content/uploads/2025/05/6.jpg") center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .contact-hero h1 {
+      font-size: 50px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .contact-hero p {
+      font-size: 19px;
+      line-height: 1.8;
+      color: #e2e8f0;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    /* ================= COMMON ================= */
+    .section {
+      padding: 80px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      color: #0f172a;
+      margin-bottom: 12px;
+      font-weight: 900;
+    }
+
+    .section-title p {
+      color: #64748b;
+      font-size: 18px;
+      max-width: 820px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    /* ================= CONTACT INFO CARDS ================= */
+    .info-grid {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      transition: 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.12);
+    }
+
+    .info-icon {
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .info-card h3 {
+      font-size: 22px;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+    }
+
+    .info-card p {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.8;
+      font-weight: 600;
+    }
+
+    /* ================= PHONE CARDS ================= */
+    .phone-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .phone-card {
+      background: linear-gradient(135deg, #eff6ff, #ffffff);
+      border-radius: 22px;
+      padding: 28px 24px;
+      border: 1px solid #dbeafe;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      transition: 0.3s ease;
+      text-align: center;
+    }
+
+    .phone-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.12);
+    }
+
+    .phone-card h3 {
+      font-size: 22px;
+      color: #1e3a8a;
+      margin-bottom: 14px;
+    }
+
+    .phone-card p {
+      font-size: 16px;
+      color: #334155;
+      line-height: 1.8;
+      font-weight: 700;
+    }
+
+    /* ================= SOCIAL ================= */
+    .social-box {
+      max-width: 1200px;
+      margin: auto;
+      background: linear-gradient(135deg, #0f172a, #1e40af, #2563eb);
+      color: white;
+      border-radius: 28px;
+      padding: 40px 30px;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+    }
+
+    .social-box h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .social-box p {
+      text-align: center;
+      font-size: 17px;
+      color: #dbeafe;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .social-item {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+    }
+
+    .social-item h4 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .social-item p {
+      margin: 0;
+      font-size: 15px;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    /* ================= CONTACT FORM ================= */
+    .form-wrapper {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .form-side,
+    .text-side {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .text-side h3,
+    .form-side h3 {
+      font-size: 28px;
+      color: #1e3a8a;
+      margin-bottom: 16px;
+    }
+
+    .text-side p {
+      font-size: 16px;
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .phone-link {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 700;
+}
+
+.phone-link:hover {
+  color: #2563eb;
+}
+
+    .quick-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .social-item {
+  cursor: pointer;
+}
+    .quick-list li {
+      background: #f8fbff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 15px;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    .success-box {
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      color: #166534;
+      padding: 14px 16px;
+      border-radius: 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .social-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+}
+
+.social-item p {
+  word-break: break-word;
+}
+
+.social-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+}
+
+    .contact-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid #cbd5e1;
+      outline: none;
+      font-size: 15px;
+      transition: 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+    }
+
+    .contact-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      border: none;
+      background: #2563eb;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 15px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 992px) {
+      .contact-hero h1 {
+        font-size: 40px;
+      }
+
+      .info-grid,
+      .phone-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .form-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2,
+      .social-box h2 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 16px 20px;
+        justify-content: center;
+      }
+
+      .logo {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .contact-hero {
+        min-height: 45vh;
+      }
+
+      .contact-hero h1 {
+        font-size: 30px;
+      }
+
+      .contact-hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2,
+      .social-box h2 {
+        font-size: 28px;
+      }
+    }
+    /* ================= GLOBAL PAGE LOADER ================= */
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.96);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #page-loader.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .loader-text {
+      color: #e0f2fe;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .neon-loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+    }
+
+    .neon-loader-ring {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      border-top: 4px solid #0ff;
+      animation: neon-spin 1s linear infinite;
+    }
+
+    .neon-loader-ring::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      border-top: 4px solid #0ff;
+      filter: blur(5px);
+      opacity: 0.7;
+      animation: neon-glow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes neon-spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes neon-glow {
+      0%, 100% {
+        filter: blur(5px);
+        opacity: 0.7;
+      }
+      50% {
+        filter: blur(10px);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ================= GLOBAL LOADER ================= -->
+  <div id="page-loader">
+    <div class="loader-wrapper">
+      <div class="neon-loader">
+        <div class="neon-loader-ring"></div>
+      </div>
+      <div class="loader-text">Loading SHEAT Portal...</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">SHEAT Group of Institutions</div>
+
+    <ul class="nav-links">
+  <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('courses') }}">Courses</a></li>
+  <li><a href="{{ url_for('admission') }}">Admissions</a></li>
+  <li><a href="{{ url_for('faculty') }}">Faculty</a></li>
+  <li><a href="{{ url_for('contact') }}">Contact</a></li>
+
+  {% if session.get('user_id') %}
+    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+    <li><a href="{{ url_for('register') }}">Register</a></li>
+  {% endif %}
+</ul>
+  </header>
+
+  <!-- HERO -->
+  <section class="contact-hero">
+    <div class="hero-content">
+      <div class="hero-badge">📞 We’re Here to Support You, Always</div>
+      <h1>Get in Touch with SHEAT Group of Institutions</h1>
+      <p>
+        Reach out to our campuses, connect with admissions teams, or send us your enquiry.
+        We’re committed to helping students and parents with the right guidance and support.
+      </p>
+    </div>
+  </section>
+
+  <!-- ADDRESS SECTION -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Campus & Office Addresses</h2>
+      <p>
+        Find our major campuses and city office locations for admissions, academic enquiries,
+        and institutional support.
+      </p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-icon">🏫</div>
+        <h3>Babatpur Campus</h3>
+        <p>
+          Engineering / Management / Polytechnic Campus<br><br>
+          15 km Milestone, NH-56, Airport Road, Babatpur, Varanasi
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">💊</div>
+        <h3>Gahani Campus</h3>
+        <p>
+          Pharmacy / Higher Education / Paramedical College<br><br>
+          Bhojubir Sindhora Road, Gahani Ayer, Varanasi
+        </p>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🏢</div>
+        <h3>City Office</h3>
+        <p>
+          Divya Complex, Ground Floor,<br>
+          Maqbool Alam Road, Petrol Pump,<br>
+          Khajuri, Varanasi
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHONE SECTION -->
+  <section class="section" style="background:#f1f7ff;">
+    <div class="section-title">
+      <h2>Admission & Department Contact Numbers</h2>
+      <p>
+        Use the appropriate contact number based on the course or department you are interested in.
+      </p>
+    </div>
+
+   <div class="phone-grid">
+  <div class="phone-card">
+    <h3>B.Tech / M.Tech / Polytechnic / MBA</h3>
+    <p><a href="tel:+917753811341" class="phone-link">+91-7753811341</a></p>
+    <p><a href="tel:+917753811344" class="phone-link">+91-7753811344</a></p>
+  </div>
+
+  <div class="phone-card">
+    <h3>B.Pharma / M.Pharma / D.Pharma</h3>
+    <p><a href="tel:+917753811343" class="phone-link">+91-7753811343</a></p>
+  </div>
+
+  <div class="phone-card">
+    <h3>Paramedical Enquiry</h3>
+    <p><a href="tel:+917007076734" class="phone-link">+91-7007076734</a></p>
+  </div>
+</div>
+  </section>
+
+  <!-- SOCIAL / WEB -->
+  <section class="section">
+    <div class="social-box">
+      <h2>Stay Connected with SHEAT</h2>
+      <p>
+        Follow us online, visit our official website, and stay updated with institutional activities,
+        announcements, and admission information.
+      </p>
+
+      <div class="social-grid">
+
+  <a href="https://www.sheatcollege.com" target="_blank" class="social-link">
+    <div class="social-item">
+      <h4>🌐 Website</h4>
+      <p>www.sheatcollege.com</p>
+    </div>
+  </a>
+
+  <a href="https://www.linkedin.com/search/results/all/?keywords=SHEAT%20Group%20of%20Institutions" target="_blank" class="social-link">
+    <div class="social-item">
+      <h4>💼 LinkedIn</h4>
+      <p>SHEAT Group of Institutions</p>
+    </div>
+  </a>
+
+  <a href="https://www.instagram.com/sheatinstitutions/" target="_blank" class="social-link">
+    <div class="social-item">
+      <h4>📸 Instagram</h4>
+      <p>@sheatinstitutions</p>
+    </div>
+  </a>
+
+  <a href="https://www.facebook.com/sheatinstitutions" target="_blank" class="social-link">
+    <div class="social-item">
+      <h4>📘 Facebook</h4>
+      <p>sheatinstitutions</p>
+    </div>
+  </a>
+
+  <a href="https://x.com/SheatCollege" target="_blank" class="social-link">
+    <div class="social-item">
+      <h4>🐦 Twitter / X</h4>
+      <p>@SheatCollege</p>
+    </div>
+  </a>
+
+  <div class="social-item">
+    <h4>📍 Campus Support</h4>
+    <p>Admissions, Counselling & Academic Guidance Available</p>
+  </div>
+
+</div>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="section" style="background:#f1f7ff;">
+    <div class="section-title">
+      <h2>Send Us an Enquiry</h2>
+      <p>
+        Fill out the form below and our team can reach out for general information,
+        admission support, or department-related guidance.
+      </p>
+    </div>
+
+    <div class="form-wrapper">
+      <div class="text-side">
+        <h3>Need Help Choosing the Right Program?</h3>
+        <p>
+          Whether you are looking for engineering, pharmacy, management, higher education,
+          or paramedical programs, our support team can guide you toward the best option.
+        </p>
+        <p>
+          We recommend mentioning your preferred course, academic background, and the type
+          of assistance you need so that our team can respond more effectively.
+        </p>
+
+        <ul class="quick-list">
+          <li>✔ Ask about admissions & eligibility</li>
+          <li>✔ Get course-related guidance</li>
+          <li>✔ Request campus visit information</li>
+          <li>✔ Enquire about departments & counselling</li>
+        </ul>
+      </div>
+
+      <div class="form-side">
+        <h3>Contact Form</h3>
+
+        {% if success %}
+        <div class="success-box">
+          Your enquiry has been submitted successfully!
+        </div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('contact') }}" class="contact-form">
+          <input type="text" name="name" placeholder="Your Full Name" required>
+          <input type="email" name="email" placeholder="Your Email Address" required>
+          <input type="tel" name="phone" placeholder="Your Phone Number" required>
+          <input type="text" name="subject" placeholder="Subject / Course Interest" required>
+          <textarea name="message" placeholder="Write your enquiry here..." required></textarea>
+          <button type="submit" class="submit-btn">Submit Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2026 SHEAT Group of Institutions. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Hide loader when page fully loads
+    window.addEventListener("load", function () {
+      const loader = document.getElementById("page-loader");
+      if (loader) {
+        setTimeout(() => {
+          loader.classList.add("hide");
+        }, 500);
+      }
+    });
+
+    // Show loader when navigating through links
+    document.addEventListener("DOMContentLoaded", function () {
+      const loader = document.getElementById("page-loader");
+      const links = document.querySelectorAll("a[href]");
+
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          const href = link.getAttribute("href");
+
+          // Ignore anchors, JS links, empty links, and new tabs
+          if (
+            !href ||
+            href.startsWith("#") ||
+            href.startsWith("javascript:") ||
+            link.target === "_blank"
+          ) {
+            return;
+          }
+
+          if (loader) {
+            loader.classList.remove("hide");
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

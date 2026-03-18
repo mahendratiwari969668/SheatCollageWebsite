@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - SHEAT College of Engineering</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f8fbff;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      width: 100%;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+      color: white;
+      padding: 18px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .back-btn {
+      text-decoration: none;
+      background: #facc15;
+      color: #111827;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(250, 204, 21, 0.35);
+    }
+
+    .back-btn:hover {
+      background: white;
+      transform: translateY(-2px);
+    }
+
+    /* ================= HERO SECTION ================= */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.65), rgba(30, 58, 138, 0.65)),
+        url("https://www.sheatcollege.com/wp-content/uploads/2025/05/6.jpg") center/cover no-repeat;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      animation: fadeUp 1s ease;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      line-height: 1.8;
+      max-width: 760px;
+      margin: 0 auto 30px;
+      color: #e2e8f0;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #facc15;
+      color: #111827;
+      box-shadow: 0 6px 18px rgba(250, 204, 21, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    /* ================= STATS ================= */
+    .stats {
+      margin-top: -70px;
+      position: relative;
+      z-index: 10;
+      padding: 0 40px;
+    }
+
+    .stats-container {
+      max-width: 1100px;
+      margin: auto;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .stat-box {
+      text-align: center;
+      padding: 18px;
+      border-radius: 18px;
+      background: #f8fbff;
+      transition: 0.3s ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.12);
+    }
+
+    .stat-box h2 {
+      font-size: 32px;
+      color: #2563eb;
+      margin-bottom: 8px;
+      font-weight: 900;
+    }
+
+    .nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 3px;
+  background: #facc15;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #facc15;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+.nav-links a.active {
+  color: #facc15;
+}
+
+    .stat-box p {
+      font-size: 15px;
+      color: #475569;
+      font-weight: 600;
+    }
+
+    /* ================= ABOUT SECTION ================= */
+    .about {
+      padding: 90px 40px 70px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      color: #0f172a;
+      margin-bottom: 12px;
+      font-weight: 900;
+    }
+
+    .section-title p {
+      color: #64748b;
+      font-size: 18px;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    .about-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 35px;
+      align-items: center;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      object-fit: cover;
+    }
+
+    .about-content h3 {
+      font-size: 32px;
+      color: #1e3a8a;
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+
+    .about-content p {
+      color: #475569;
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .highlight-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .highlight-list li {
+      margin-bottom: 12px;
+      font-size: 16px;
+      color: #334155;
+      font-weight: 600;
+    }
+
+    /* ================= FEATURES ================= */
+    .features {
+      padding: 30px 40px 90px;
+    }
+
+    .feature-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 22px;
+      padding: 30px 25px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      transition: 0.35s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.12);
+    }
+
+    .feature-icon {
+      font-size: 38px;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      font-size: 24px;
+      color: #0f172a;
+      margin-bottom: 12px;
+    }
+
+    .feature-card p {
+      color: #64748b;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ================= CTA ================= */
+    .cta {
+      margin: 0 40px 80px;
+      background: linear-gradient(135deg, #0f172a, #1e40af, #2563eb);
+      color: white;
+      border-radius: 28px;
+      padding: 55px 30px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+    }
+
+    .cta h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 760px;
+      margin: auto;
+      color: #dbeafe;
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    /* ================= FOOTER ================= */
+    .footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 15px;
+    }
+
+    /* ================= ANIMATION ================= */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-title h2,
+      .cta h2 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 16px 20px;
+      }
+
+      .logo {
+        font-size: 18px;
+      }
+
+      .back-btn {
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+
+      .hero {
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .stats {
+        margin-top: -40px;
+        padding: 0 20px;
+      }
+
+      .stats-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+
+      .about,
+      .features {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        margin: 0 20px 60px;
+        padding: 40px 20px;
+      }
+
+      .section-title h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+    }
+
+    /* ================= GLOBAL PAGE LOADER ================= */
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.96);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #page-loader.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .loader-text {
+      color: #e0f2fe;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .neon-loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+    }
+
+    .neon-loader-ring {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      border-top: 4px solid #0ff;
+      animation: neon-spin 1s linear infinite;
+    }
+
+    .neon-loader-ring::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      border-top: 4px solid #0ff;
+      filter: blur(5px);
+      opacity: 0.7;
+      animation: neon-glow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes neon-spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes neon-glow {
+      0%, 100% {
+        filter: blur(5px);
+        opacity: 0.7;
+      }
+      50% {
+        filter: blur(10px);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= GLOBAL LOADER ================= -->
+  <div id="page-loader">
+    <div class="loader-wrapper">
+      <div class="neon-loader">
+        <div class="neon-loader-ring"></div>
+      </div>
+      <div class="loader-text">Loading SHEAT Portal...</div>
+    </div>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+  <div class="logo">SHEAT College of Engineering</div>
+
+ <ul class="nav-links">
+  <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('courses') }}">Courses</a></li>
+  <li><a href="{{ url_for('admission') }}">Admissions</a></li>
+  <li><a href="{{ url_for('faculty') }}">Faculty</a></li>
+  <li><a href="{{ url_for('contact') }}">Contact</a></li>
+
+  {% if session.get('user_id') %}
+    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+    <li><a href="{{ url_for('register') }}">Register</a></li>
+  {% endif %}
+</ul>
+</header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🎓 Welcome to SHEAT College of Engineering</div>
+      <h1>Empowering Future Engineers with Innovation & Excellence</h1>
+      <p>
+        At SHEAT College of Engineering, we believe in shaping bright minds through
+        quality education, advanced learning facilities, industry-focused training,
+        and a vision to build the next generation of leaders and innovators.
+      </p>
+
+    <div class="hero-buttons">
+  <a href="{{ url_for('courses') }}" class="btn-primary">Explore Courses</a>
+  <a href="{{ url_for('admission') }}" class="btn-secondary">Apply for Admission</a>
+</div>
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat-box">
+        <h2>25+</h2>
+        <p>Years of Academic Excellence</p>
+      </div>
+      <div class="stat-box">
+        <h2>50+</h2>
+        <p>Experienced Faculty Members</p>
+      </div>
+      <div class="stat-box">
+        <h2>5000+</h2>
+        <p>Successful Alumni Network</p>
+      </div>
+      <div class="stat-box">
+        <h2>100%</h2>
+        <p>Commitment to Student Growth</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about">
+    <div class="section-title">
+      <h2>Why Choose SHEAT?</h2>
+      <p>
+        A place where academic knowledge meets practical exposure, preparing students
+        for real-world challenges and future opportunities.
+      </p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://www.sheatcollege.com/wp-content/uploads/2025/05/6.jpg" alt="SHEAT Campus">
+      </div>
+
+      <div class="about-content">
+        <h3>Building Careers Through Quality Education & Real Skills</h3>
+        <p>
+          SHEAT College of Engineering is dedicated to nurturing talent through
+          strong academic foundations, modern infrastructure, skilled faculty,
+          and a student-first learning environment.
+        </p>
+        <p>
+          Our mission is not only to teach, but to transform students into
+          confident professionals who are ready for the future.
+        </p>
+
+        <ul class="highlight-list">
+          <li>✔ Industry-Oriented Curriculum</li>
+          <li>✔ Modern Labs & Smart Classrooms</li>
+          <li>✔ Career Guidance & Placement Support</li>
+          <li>✔ Innovation, Research & Skill Development</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <section class="features">
+    <div class="section-title">
+      <h2>Our Core Strengths</h2>
+      <p>
+        Designed to give students a complete academic and professional growth journey.
+      </p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏫</div>
+        <h3>Modern Campus</h3>
+        <p>
+          A vibrant and well-equipped campus environment with advanced classrooms,
+          labs, and learning spaces for holistic development.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">👨‍🏫</div>
+        <h3>Expert Faculty</h3>
+        <p>
+          Learn from experienced educators and mentors committed to helping students
+          build strong fundamentals and practical confidence.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💼</div>
+        <h3>Career Support</h3>
+        <p>
+          Dedicated training, guidance, and placement preparation to help students
+          step into the professional world with confidence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="cta">
+    <h2>Start Your Journey with SHEAT</h2>
+    <p>
+      Discover opportunities, unlock your potential, and become part of an institution
+      committed to academic excellence and career success.
+    </p>
+    <a href="{{ url_for('contact') }}"class="btn-primary">Join Us Today</a>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    © 2026 SHEAT College of Engineering. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Hide loader when page fully loads
+    window.addEventListener("load", function () {
+      const loader = document.getElementById("page-loader");
+      if (loader) {
+        setTimeout(() => {
+          loader.classList.add("hide");
+        }, 500);
+      }
+    });
+
+    // Show loader when navigating through links
+    document.addEventListener("DOMContentLoaded", function () {
+      const loader = document.getElementById("page-loader");
+      const links = document.querySelectorAll("a[href]");
+
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          const href = link.getAttribute("href");
+
+          // Ignore anchors, JS links, empty links, and new tabs
+          if (
+            !href ||
+            href.startsWith("#") ||
+            href.startsWith("javascript:") ||
+            link.target === "_blank"
+          ) {
+            return;
+          }
+
+          if (loader) {
+            loader.classList.remove("hide");
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

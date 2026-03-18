@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Faculty - SHEAT Group of Institutions</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f8fbff;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ================= NAVBAR ================= */
+    .navbar {
+      width: 100%;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+      color: white;
+      padding: 18px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 3px;
+      background: #facc15;
+      border-radius: 10px;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #facc15;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #facc15;
+    }
+
+    /* ================= HERO ================= */
+    .faculty-hero {
+      min-height: 58vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.78), rgba(30, 58, 138, 0.68)),
+        url("https://www.sheatcollege.com/wp-content/uploads/2025/05/6.jpg") center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .faculty-hero h1 {
+      font-size: 52px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .faculty-hero p {
+      font-size: 19px;
+      line-height: 1.8;
+      color: #e2e8f0;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    /* ================= COMMON ================= */
+    .section {
+      padding: 80px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      color: #0f172a;
+      margin-bottom: 12px;
+      font-weight: 900;
+    }
+
+    .section-title p {
+      color: #64748b;
+      font-size: 18px;
+      max-width: 820px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    /* ================= STATS ================= */
+    .stats-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      transition: 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.12);
+    }
+
+    .stat-card h3 {
+      font-size: 32px;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .stat-card p {
+      font-size: 15px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* ================= EXECUTIVE BOARD ================= */
+    .board-grid {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
+    }
+
+    .member-card {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      transition: 0.3s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.12);
+    }
+
+    .member-photo {
+      height: 220px;
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 58px;
+      color: #1e3a8a;
+      font-weight: 900;
+    }
+
+    .member-info {
+      padding: 20px 18px;
+      text-align: center;
+    }
+
+    .member-info h3 {
+      font-size: 18px;
+      color: #0f172a;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .member-info p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    /* ================= CORE TEAM ================= */
+    .core-grid {
+      max-width: 1300px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .core-card {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      transition: 0.3s ease;
+    }
+
+    .core-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.12);
+    }
+
+    .core-photo {
+      height: 180px;
+      background: linear-gradient(135deg, #e0f2fe, #eff6ff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: #1e3a8a;
+      font-weight: 900;
+    }
+
+    .core-info {
+      padding: 18px 16px;
+      text-align: center;
+    }
+
+    .core-info h3 {
+      font-size: 17px;
+      color: #0f172a;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .core-info p {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+      font-weight: 600;
+    }
+
+    /* ================= HIGHLIGHTS ================= */
+    .highlights-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .highlight-card {
+      background: white;
+      border-radius: 22px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      transition: 0.3s ease;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.12);
+    }
+
+    .highlight-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .highlight-card h4 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #1e3a8a;
+    }
+
+    .highlight-card p {
+      font-size: 15px;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    /* ================= CTA ================= */
+    .cta {
+      margin: 0 40px 80px;
+      background: linear-gradient(135deg, #0f172a, #1e40af, #2563eb);
+      color: white;
+      border-radius: 28px;
+      padding: 55px 30px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+    }
+
+    .cta h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 760px;
+      margin: auto;
+      color: #dbeafe;
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .cta-btn {
+      text-decoration: none;
+      display: inline-block;
+      background: #facc15;
+      color: #111827;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      box-shadow: 0 6px 18px rgba(250, 204, 21, 0.35);
+    }
+
+    .cta-btn:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    .footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 15px;
+    }
+
+    @media (max-width: 1200px) {
+      .board-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .core-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .faculty-hero h1 {
+        font-size: 40px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .board-grid,
+      .core-grid,
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .section-title h2,
+      .cta h2 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 16px 20px;
+        justify-content: center;
+      }
+
+      .logo {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .faculty-hero {
+        min-height: 50vh;
+      }
+
+      .faculty-hero h1 {
+        font-size: 30px;
+      }
+
+      .faculty-hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .stats-grid,
+      .board-grid,
+      .core-grid,
+      .highlights-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        margin: 0 20px 60px;
+        padding: 40px 20px;
+      }
+
+      .section-title h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+    }
+
+    /* ================= GLOBAL PAGE LOADER ================= */
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.96);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #page-loader.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .loader-text {
+      color: #e0f2fe;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .neon-loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+    }
+
+    .neon-loader-ring {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      border-top: 4px solid #0ff;
+      animation: neon-spin 1s linear infinite;
+    }
+
+    .neon-loader-ring::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      border-top: 4px solid #0ff;
+      filter: blur(5px);
+      opacity: 0.7;
+      animation: neon-glow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes neon-spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes neon-glow {
+      0%, 100% {
+        filter: blur(5px);
+        opacity: 0.7;
+      }
+      50% {
+        filter: blur(10px);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ================= GLOBAL LOADER ================= -->
+  <div id="page-loader">
+    <div class="loader-wrapper">
+      <div class="neon-loader">
+        <div class="neon-loader-ring"></div>
+      </div>
+      <div class="loader-text">Loading SHEAT Portal...</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">SHEAT Group of Institutions</div>
+
+    <ul class="nav-links">
+  <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('courses') }}">Courses</a></li>
+  <li><a href="{{ url_for('admission') }}">Admissions</a></li>
+  <li><a href="{{ url_for('faculty') }}">Faculty</a></li>
+  <li><a href="{{ url_for('contact') }}">Contact</a></li>
+
+  {% if session.get('user_id') %}
+    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+    <li><a href="{{ url_for('register') }}">Register</a></li>
+  {% endif %}
+</ul>
+  </header>
+
+  <!-- HERO -->
+  <section class="faculty-hero">
+    <div class="hero-content">
+      <div class="hero-badge">👨‍🏫 Experienced Leadership & Academic Excellence</div>
+      <h1>Meet Our Leadership, Faculty & Academic Team</h1>
+      <p>
+        SHEAT Group of Institutions is guided by an experienced executive board,
+        dedicated principals, academic leaders, and student-focused professionals
+        committed to excellence in education and institutional growth.
+      </p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Faculty & Leadership Overview</h2>
+      <p>
+        A strong academic ecosystem supported by institutional leadership, experienced
+        educators, administrative professionals, and student success teams.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>20+</h3>
+        <p>Leadership & Academic Members</p>
+      </div>
+      <div class="stat-card">
+        <h3>Multi-Disciplinary</h3>
+        <p>Across Engineering, Pharmacy, Higher Education & More</p>
+      </div>
+      <div class="stat-card">
+        <h3>Student-Centric</h3>
+        <p>Academic, Exam, HR, Training & Placement Support</p>
+      </div>
+      <div class="stat-card">
+        <h3>Institutional Strength</h3>
+        <p>Guided by Trustees, Directors & Academic Heads</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXECUTIVE BOARD -->
+  <section class="section" style="background:#f1f7ff;">
+    <div class="section-title">
+      <h2>Executive Board</h2>
+      <p>
+        The institutional leadership team that shapes the long-term vision,
+        governance, and strategic direction of SHEAT Group of Institutions.
+      </p>
+    </div>
+
+    <div class="board-grid">
+      <div class="member-card">
+        <div class="member-photo">VS</div>
+        <div class="member-info">
+          <h3>Shri Virendra Singh</h3>
+          <p>Chief Trustee & Chairman, Saraswati Trust</p>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo">VS</div>
+        <div class="member-info">
+          <h3>Mr. Vinod Singh</h3>
+          <p>Vice Chairman, SHEAT Group of Institutions</p>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo">VJ</div>
+        <div class="member-info">
+          <h3>Mr. Vijay Singh</h3>
+          <p>Trustee, Saraswati Trust</p>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo">NK</div>
+        <div class="member-info">
+          <h3>Mr. Naveen Kumar Singh</h3>
+          <p>Director of Higher Education</p>
+        </div>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo">VV</div>
+        <div class="member-info">
+          <h3>Mr. Vivek Vikram Singh</h3>
+          <p>Managing Director, SHEAT Group of Institutions</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE TEAM -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Core Academic & Administrative Team</h2>
+      <p>
+        A professional and dedicated team responsible for academic quality,
+        examinations, operations, admissions, student activities, and institutional management.
+      </p>
+    </div>
+
+    <div class="core-grid">
+      <div class="core-card">
+        <div class="core-photo">AS</div>
+        <div class="core-info">
+          <h3>Prof. Ajitkumar N. Shukla</h3>
+          <p>Director, SHEAT College of Engineering & Management</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">RS</div>
+        <div class="core-info">
+          <h3>Prof. Rajeev Shukla</h3>
+          <p>Director, SHEAT College of Pharmacy</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">SS</div>
+        <div class="core-info">
+          <h3>Dr. Santosh Singh</h3>
+          <p>Principal, Higher Education</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">MS</div>
+        <div class="core-info">
+          <h3>Mrs. Mala Singh</h3>
+          <p>GNM Principal, SHEAT College of Paramedical</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">SK</div>
+        <div class="core-info">
+          <h3>Dr. S. K. Upadhyay</h3>
+          <p>Principal, Polytechnic</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">BK</div>
+        <div class="core-info">
+          <h3>Mr. Binay Kumar Singh</h3>
+          <p>Dean, Academics, SHEAT College of Engineering</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">PU</div>
+        <div class="core-info">
+          <h3>Dr. Pranav Upadhyay</h3>
+          <p>Dean Academics, SHEAT College of Pharmacy</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">AN</div>
+        <div class="core-info">
+          <h3>Mr. Anurag Singh</h3>
+          <p>Controller of Examination, SHEAT College of Engineering</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">AK</div>
+        <div class="core-info">
+          <h3>Mr. Amit Kumar Agrawal</h3>
+          <p>Human Resource, SHEAT College of Engineering</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">SJ</div>
+        <div class="core-info">
+          <h3>Mr. Sanjay Singh</h3>
+          <p>Registrar, SHEAT College of Engineering</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">RC</div>
+        <div class="core-info">
+          <h3>Mr. Rajesh Kumar Chaurasia</h3>
+          <p>Deputy Registrar, SHEAT College of Engineering</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">SA</div>
+        <div class="core-info">
+          <h3>Mr. Saurabh Srivastava</h3>
+          <p>Registrar, SHEAT College of Paramedical</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">VN</div>
+        <div class="core-info">
+          <h3>Mr. Veena Singh</h3>
+          <p>Registrar, SHEAT College of Pharmacy</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">PS</div>
+        <div class="core-info">
+          <h3>Mrs. Pooja Singh</h3>
+          <p>Training & Placements Incharge / Dean of Student Activities</p>
+        </div>
+      </div>
+
+      <div class="core-card">
+        <div class="core-photo">PK</div>
+        <div class="core-info">
+          <h3>Mr. Piyush Kumar Singh</h3>
+          <p>Training & Admission Officer</p>
+        </div>
+      </div>
+
+      <!-- Added professional support cards -->
+      <div class="core-card">
+        <div class="core-photo">FA</div>
+        <div class="core-info">
+          <h3>Faculty Advisory Team</h3>
+          <p>Supporting mentoring, academic guidance, and student development across departments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="section" style="background:#f1f7ff;">
+    <div class="section-title">
+      <h2>Why Learn from SHEAT Faculty?</h2>
+      <p>
+        Our faculty and leadership ecosystem is designed to support students academically,
+        professionally, and personally throughout their educational journey.
+      </p>
+    </div>
+
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <div class="highlight-icon">🎓</div>
+        <h4>Academic Leadership</h4>
+        <p>
+          Dedicated principals, directors, and deans ensure quality education,
+          discipline, curriculum focus, and strong academic administration.
+        </p>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon">🧠</div>
+        <h4>Student Guidance</h4>
+        <p>
+          Faculty and academic teams guide students through academics, examinations,
+          mentoring, placements, and institutional support systems.
+        </p>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-icon">💼</div>
+        <h4>Career Readiness</h4>
+        <p>
+          With training and placement support, students are prepared for real-world
+          opportunities through career-focused institutional efforts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Learn from Leaders. Grow with Mentors.</h2>
+    <p>
+      SHEAT’s faculty ecosystem combines leadership, academic management, student support,
+      and professional development to create a complete learning environment.
+    </p>
+    <a href="{{ url_for('admission') }}"class="cta-btn">Explore Admissions</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2026 SHEAT Group of Institutions. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Hide loader when page fully loads
+    window.addEventListener("load", function () {
+      const loader = document.getElementById("page-loader");
+      if (loader) {
+        setTimeout(() => {
+          loader.classList.add("hide");
+        }, 500);
+      }
+    });
+
+    // Show loader when navigating through links
+    document.addEventListener("DOMContentLoaded", function () {
+      const loader = document.getElementById("page-loader");
+      const links = document.querySelectorAll("a[href]");
+
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          const href = link.getAttribute("href");
+
+          // Ignore anchors, JS links, empty links, and new tabs
+          if (
+            !href ||
+            href.startsWith("#") ||
+            href.startsWith("javascript:") ||
+            link.target === "_blank"
+          ) {
+            return;
+          }
+
+          if (loader) {
+            loader.classList.remove("hide");
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

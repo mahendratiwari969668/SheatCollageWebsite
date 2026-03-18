@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Courses - SHEAT College of Engineering</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f8fbff;
+      color: #0f172a;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .navbar {
+      width: 100%;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #2563eb);
+      color: white;
+      padding: 18px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 3px;
+      background: #facc15;
+      border-radius: 10px;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #facc15;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #facc15;
+    }
+
+    /* HERO */
+    .courses-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.78), rgba(30, 58, 138, 0.68)),
+        url("https://www.sheatcollege.com/wp-content/uploads/2025/05/6.jpg") center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 950px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .courses-hero h1 {
+      font-size: 52px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .courses-hero p {
+      font-size: 19px;
+      line-height: 1.8;
+      color: #e2e8f0;
+      max-width: 760px;
+      margin: auto;
+    }
+
+    /* COMMON */
+    .section {
+      padding: 80px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      color: #0f172a;
+      margin-bottom: 12px;
+      font-weight: 900;
+    }
+
+    .section-title p {
+      color: #64748b;
+      font-size: 18px;
+      max-width: 820px;
+      margin: auto;
+      line-height: 1.7;
+    }
+
+    /* QUICK STATS */
+    .stats-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 20px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      transition: 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.12);
+    }
+
+    .stat-card h3 {
+      font-size: 32px;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .stat-card p {
+      font-size: 15px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* CATEGORY CARDS */
+    .course-sections {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+      transition: 0.3s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.12);
+    }
+
+    .course-card h3 {
+      font-size: 28px;
+      color: #1e3a8a;
+      margin-bottom: 18px;
+      border-bottom: 3px solid #dbeafe;
+      padding-bottom: 10px;
+    }
+
+    .course-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .course-list li {
+      background: #f8fbff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 15px;
+      color: #334155;
+      font-weight: 600;
+      line-height: 1.6;
+      transition: 0.3s ease;
+    }
+
+    .course-list li:hover {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      transform: translateX(6px);
+    }
+
+    /* HIGHLIGHT BLOCK */
+    .highlight-box {
+      max-width: 1200px;
+      margin: auto;
+      background: linear-gradient(135deg, #0f172a, #1e40af, #2563eb);
+      color: white;
+      border-radius: 28px;
+      padding: 40px 30px;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+    }
+
+    .highlight-box h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+    }
+
+    .highlight-box p {
+      font-size: 17px;
+      color: #dbeafe;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .highlight-box ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .highlight-box li {
+      font-size: 16px;
+      color: #e0f2fe;
+      font-weight: 600;
+    }
+
+    /* CTA */
+    .cta {
+      margin: 0 40px 80px;
+      background: linear-gradient(135deg, #0f172a, #1e40af, #2563eb);
+      color: white;
+      border-radius: 28px;
+      padding: 55px 30px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2);
+    }
+
+    .cta h2 {
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 760px;
+      margin: auto;
+      color: #dbeafe;
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .cta-btn {
+      text-decoration: none;
+      display: inline-block;
+      background: #facc15;
+      color: #111827;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      transition: 0.3s ease;
+      box-shadow: 0 6px 18px rgba(250, 204, 21, 0.35);
+    }
+
+    .cta-btn:hover {
+      background: white;
+      transform: translateY(-3px);
+    }
+
+    .footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 15px;
+    }
+
+    @media (max-width: 992px) {
+      .courses-hero h1 {
+        font-size: 40px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .course-sections {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2,
+      .cta h2 {
+        font-size: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 16px 20px;
+        justify-content: center;
+      }
+
+      .logo {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .courses-hero {
+        min-height: 50vh;
+      }
+
+      .courses-hero h1 {
+        font-size: 30px;
+      }
+
+      .courses-hero p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        margin: 0 20px 60px;
+        padding: 40px 20px;
+      }
+
+      .section-title h2,
+      .cta h2 {
+        font-size: 28px;
+      }
+    }
+    /* ================= GLOBAL PAGE LOADER ================= */
+    #page-loader {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(15, 23, 42, 0.96);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #page-loader.hide {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .loader-text {
+      color: #e0f2fe;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .neon-loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 100px;
+    }
+
+    .neon-loader-ring {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      border-top: 4px solid #0ff;
+      animation: neon-spin 1s linear infinite;
+    }
+
+    .neon-loader-ring::before {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
+      border-radius: 50%;
+      border: 4px solid transparent;
+      border-top: 4px solid #0ff;
+      filter: blur(5px);
+      opacity: 0.7;
+      animation: neon-glow 1.5s ease-in-out infinite;
+    }
+
+    @keyframes neon-spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes neon-glow {
+      0%, 100% {
+        filter: blur(5px);
+        opacity: 0.7;
+      }
+      50% {
+        filter: blur(10px);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ================= GLOBAL LOADER ================= -->
+  <div id="page-loader">
+    <div class="loader-wrapper">
+      <div class="neon-loader">
+        <div class="neon-loader-ring"></div>
+      </div>
+      <div class="loader-text">Loading SHEAT Portal...</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="logo">SHEAT College of Engineering</div>
+
+    <ul class="nav-links">
+  <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
+  <li><a href="{{ url_for('about') }}">About</a></li>
+  <li><a href="{{ url_for('courses') }}">Courses</a></li>
+  <li><a href="{{ url_for('admission') }}">Admissions</a></li>
+  <li><a href="{{ url_for('faculty') }}">Faculty</a></li>
+  <li><a href="{{ url_for('contact') }}">Contact</a></li>
+
+  {% if session.get('user_id') %}
+    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  {% else %}
+    <li><a href="{{ url_for('login') }}">Login</a></li>
+    <li><a href="{{ url_for('register') }}">Register</a></li>
+  {% endif %}
+</ul>
+  </header>
+
+  <!-- HERO -->
+  <section class="courses-hero">
+    <div class="hero-content">
+      <div class="hero-badge">📘 Programs Across Engineering, Business, Pharmacy & More</div>
+      <h1>Explore SHEAT’s Academic Programs & Professional Learning Paths</h1>
+      <p>
+        SHEAT Group of Institutions offers a wide range of undergraduate, diploma,
+        postgraduate, and professional programs designed to build strong academic
+        foundations and real-world career skills.
+      </p>
+    </div>
+  </section>
+
+  <!-- QUICK STATS -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Academic Overview</h2>
+      <p>
+        A broad academic ecosystem with multiple institutions, diverse disciplines,
+        and career-oriented programs for students across different streams.
+      </p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3>20+</h3>
+        <p>Programs Offered</p>
+      </div>
+      <div class="stat-card">
+        <h3>6+</h3>
+        <p>Academic Schools / Colleges</p>
+      </div>
+      <div class="stat-card">
+        <h3>UG + PG</h3>
+        <p>Multiple Study Levels</p>
+      </div>
+      <div class="stat-card">
+        <h3>Career Focused</h3>
+        <p>Industry-Oriented Learning</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN COURSES -->
+  <section class="section" style="background:#f1f7ff;">
+    <div class="section-title">
+      <h2>Programs Offered at SHEAT</h2>
+      <p>
+        Below is a structured course listing based on the institutional brochure details,
+        with additional professionally-written descriptions where the brochure is incomplete.
+      </p>
+    </div>
+
+    <div class="course-sections">
+
+      <!-- ENGINEERING -->
+      <div class="course-card">
+        <h3>1. SHEAT College of Engineering</h3>
+        <ul class="course-list">
+          <li>B.Tech – Computer Science & Engineering (CSE) <strong>(Intake: 90)</strong></li>
+          <li>B.Tech – CSE (Artificial Intelligence & Machine Learning) <strong>(Intake: 60)</strong></li>
+          <li>B.Tech – CSE (Data Science) <strong>(Intake: 30)</strong></li>
+          <li>B.Tech – Electronics & Communication Engineering <strong>(Intake: 30)</strong></li>
+          <li>B.Tech – Mechanical Engineering <strong>(Intake: 30)</strong></li>
+          <li>B.Tech – Civil Engineering <strong>(Intake: 30)</strong></li>
+          <li>B.Tech – Electrical & Electronics Engineering <strong>(Intake: 30)</strong></li>
+          <li>M.Tech – Computer Science & Engineering <strong>(Intake: 24)</strong></li>
+          <li>M.Tech – Electronics & Communication Engineering <strong>(Intake: 24)</strong></li>
+        </ul>
+      </div>
+
+      <!-- BUSINESS -->
+      <div class="course-card">
+        <h3>2. SHEAT School of Business</h3>
+        <ul class="course-list">
+          <li>BBA – Bachelor of Business Administration <strong>(Intake: 180)</strong></li>
+          <li>BCA – Bachelor of Computer Applications <strong>(Intake: 180)</strong></li>
+          <li>B.Com – Bachelor of Commerce <strong>(Intake: 90)</strong></li>
+          <li>M.Com – Master of Commerce <strong>(Intake: 50)</strong></li>
+          <li>MBA – Master of Business Administration <strong>(Specializations: Marketing, HR, Finance, Operations, IT / International Business)</strong></li>
+        </ul>
+      </div>
+
+      <!-- PHARMACY -->
+      <div class="course-card">
+        <h3>3. SHEAT College of Pharmacy</h3>
+        <ul class="course-list">
+          <li>D.Pharma – Diploma in Pharmacy <strong>(Intake: 60)</strong></li>
+          <li>B.Pharma – Bachelor of Pharmacy <strong>(Intake: 100)</strong></li>
+          <li>M.Pharma – Pharmacology <strong>(Intake: 15)</strong></li>
+          <li>M.Pharma – Pharmaceutics <strong>(Intake: 15)</strong></li>
+          <li>Advanced pharmaceutical learning with lab exposure, practical training, and healthcare-focused academic development.</li>
+        </ul>
+      </div>
+
+      <!-- HIGHER EDUCATION -->
+      <div class="course-card">
+        <h3>4. SHEAT College of Higher Education</h3>
+        <ul class="course-list">
+          <li>B.A. – Bachelor of Arts</li>
+          <li>B.Sc. – Science Streams (including Physics, Chemistry, Mathematics, Zoology, Botany and related combinations)</li>
+          <li>BCA – Bachelor of Computer Applications</li>
+          <li>B.Com – Bachelor of Commerce</li>
+          <li>B.Ed – Bachelor of Education</li>
+          <li>B.P.Ed – Bachelor of Physical Education</li>
+          <li>M.A. – Hindi, Sociology, Geography, Psychology, Education, Physical Education and more</li>
+          <li>M.Com – Master of Commerce</li>
+        </ul>
+      </div>
+
+      <!-- PARAMEDICAL -->
+      <div class="course-card">
+        <h3>5. SHEAT College of Paramedical</h3>
+        <ul class="course-list">
+          <li>GNM – General Nursing and Midwifery <strong>(3.5 Year Diploma)</strong></li>
+          <li>ANM – Auxiliary Nursing & Midwifery <strong>(Professional Nursing Foundation Program)</strong></li>
+          <li>B.Sc Nursing (Applied) <strong>(Career-oriented nursing pathway)</strong></li>
+          <li>P.B.B.Sc Nursing (Applied) <strong>(For advanced nursing progression)</strong></li>
+          <li>Healthcare-focused academic and clinical exposure for students aiming at service-based medical careers.</li>
+        </ul>
+      </div>
+
+      <!-- POLYTECHNIC -->
+      <div class="course-card">
+        <h3>6. SHEAT College of Polytechnic</h3>
+        <ul class="course-list">
+          <li>Diploma in Computer Science & Engineering <strong>(Intake: 60)</strong></li>
+          <li>Diploma in Electrical Engineering <strong>(Intake: 60)</strong></li>
+          <li>Diploma in Civil Engineering <strong>(Intake: 60)</strong></li>
+          <li>Diploma in Mechanical Engineering (Automobile) <strong>(Intake: 30)</strong></li>
+          <li>Diploma in Mechanical Engineering (Production) <strong>(Intake: 30)</strong></li>
+          <li>Skill-oriented diploma programs with practical workshops and technical training.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXTRA HIGHLIGHT -->
+  <section class="section">
+    <div class="highlight-box">
+      <h2>Why These Programs Stand Out</h2>
+      <p>
+        SHEAT’s academic portfolio is not limited to just engineering. It covers technical education,
+        business, commerce, pharmacy, higher education, nursing, and diploma pathways—making it a
+        multi-disciplinary institution with broad student opportunities.
+      </p>
+      <ul>
+        <li>✔ Engineering branches include modern demand areas like AI/ML and Data Science</li>
+        <li>✔ Strong options for BCA / BBA / MBA students looking for career-focused programs</li>
+        <li>✔ Pharmacy and Paramedical programs add healthcare-sector opportunities</li>
+        <li>✔ Polytechnic courses create direct skill-based entry points for technical careers</li>
+        <li>✔ Higher Education streams support arts, commerce, education, and postgraduate progression</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Choose the Right Course for Your Future</h2>
+    <p>
+      Whether you want to build a career in engineering, business, pharmacy, healthcare,
+      education, or technology—SHEAT offers multiple academic pathways to help you grow.
+    </p>
+    <a href="{{ url_for('admission') }}" class="cta-btn">Apply for Admission</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2026 SHEAT College of Engineering. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Hide loader when page fully loads
+    window.addEventListener("load", function () {
+      const loader = document.getElementById("page-loader");
+      if (loader) {
+        setTimeout(() => {
+          loader.classList.add("hide");
+        }, 500);
+      }
+    });
+
+    // Show loader when navigating through links
+    document.addEventListener("DOMContentLoaded", function () {
+      const loader = document.getElementById("page-loader");
+      const links = document.querySelectorAll("a[href]");
+
+      links.forEach(link => {
+        link.addEventListener("click", function (e) {
+          const href = link.getAttribute("href");
+
+          // Ignore anchors, JS links, empty links, and new tabs
+          if (
+            !href ||
+            href.startsWith("#") ||
+            href.startsWith("javascript:") ||
+            link.target === "_blank"
+          ) {
+            return;
+          }
+
+          if (loader) {
+            loader.classList.remove("hide");
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
